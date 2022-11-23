@@ -4,9 +4,9 @@
         <x-input-label for="titulo" :value="__('Titulo de la Vacante')" />
 
         <x-text-input   id="titulo" 
-                        class="block mt-1 w-full " 
-                        type="text" 
-                        wire.model="titulo" 
+                        class="block mt-1 w-full" 
+                        type="text"
+                        wire:model="titulo" 
                         :value="old('titulo')" 
         />
 
@@ -41,7 +41,7 @@
 
         <select  
             id="categoria"
-            wire:mode="categoria"
+            wire:model="categoria"
             class="rounded-md block border-gray-300 w-full">
             <option>-- Seleccione --</option>
             @foreach ($categorias as $categoria)
