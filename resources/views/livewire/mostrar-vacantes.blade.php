@@ -14,7 +14,7 @@
                     class="bg-gray-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase">Candidatos
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('vacantes.edit', $vacante->id) }}"
                     class="bg-gray-800 py-2 px-4 rounded-lg text-white text-xs font-bold uppercase">Editar
                     </a>
 
@@ -28,6 +28,6 @@
     @endforelse
 </div>
 
-<div class="flex justify-center mt-10">
+<div class="mt-10">
     {{ $vacantes->links() }}
 </div>

@@ -1,5 +1,5 @@
 
-<form class="md: w-1/2 space-y-5" wire:submit.prevent='crearVacante'>
+<form class="md: w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
     <div>
         <x-input-label for="titulo" :value="__('Titulo de la Vacante')" />
 
@@ -25,7 +25,7 @@
             class="rounded-md block border-gray-300 w-full">
             <option>-- Seleccione --</option>
             @foreach ($salarios as $salario)
-                <option value="{{ $salario->id }}">{{$salario->salario}}</option>   
+                <option value="{{ $salario->id }}">{{$salario->$salario}}</option>
             @endforeach
 
         </select>
@@ -45,7 +45,7 @@
             class="rounded-md block border-gray-300 w-full">
             <option>-- Seleccione --</option>
             @foreach ($categorias as $categoria)
-                <option value="{{ $categoria->id }}">{{$categoria->categoria}}</option>
+                <option value="{{ $categoria->id }}">{{$categoria->$categoria}}</option>
             @endforeach
         </select>
 
@@ -97,8 +97,8 @@
         </textarea>
 
     </div>-->
-
-    <div class="border border-custom">
+  
+    <div>
         <x-input-label for="imagen" :value="__('Imagen')" />
 
         <x-text-input   id="imagen" 
@@ -109,19 +109,25 @@
         />
 
         <div class="my-5">
+            <x-input-label :value="__('Imagen Actual')" />
+            <img src="{{ asset('storage/vacantes/' . $imagen) }}" alt="{{ 'Imagen Vacante' . $titulo }}">
+        </div>
+    
+
+        {{-- <div class="my-5">
             @if($imagen)
                 Imagen:
                 <img src="{{ $imagen->temporaryUrl() }}">
             @endif
-        </div>
+        </div> --}}
 
         @error('imagen')
             <livewire:mostrar-alerta :message="$message"/>
         @enderror
         
     </div>
-        <x-primary-button class="border-custom">
-            {{ __('Crear Vacante') }}
+        <x-primary-button class="border-custom bg-rose-800">
+            {{ __('Guardar Cambios') }}
         </x-primary-button>
         
 
